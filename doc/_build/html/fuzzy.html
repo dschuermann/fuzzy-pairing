@@ -1,0 +1,229 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Fuzzy Cryptography &mdash; Fuzzy Pairing v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Fuzzy Pairing v1.0 documentation" href="index.html" />
+    <link rel="next" title="Implementation of Fingerprinting" href="fingerprint.html" />
+    <link rel="prev" title="Documentation of Fuzzy Pairing" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="fingerprint.html" title="Implementation of Fingerprinting"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Documentation of Fuzzy Pairing"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Fuzzy Pairing v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-crypto_fuzzy_jw">
+<span id="fuzzy-cryptography"></span><h1>Fuzzy Cryptography<a class="headerlink" href="#module-crypto_fuzzy_jw" title="Permalink to this headline">¶</a></h1>
+<p>Fuzzy cryptography based on Juels &amp; Wattenberg
+Scheme &#8220;Fuzzy Commitment&#8221;</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">platform:</th><td class="field-body">Linux</td>
+</tr>
+<tr class="field"><th class="field-name">synopsis:</th><td class="field-body">Fuzzy cryptography</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="function">
+<dt id="crypto_fuzzy_jw.JW_commit">
+<tt class="descclassname">crypto_fuzzy_jw.</tt><tt class="descname">JW_commit</tt><big>(</big><em>x</em>, <em>m=15</em>, <em>n=20</em>, <em>symsize=8</em><big>)</big><a class="headerlink" href="#crypto_fuzzy_jw.JW_commit" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Juels Wattenberg</em> based function to make a fuzzy commitment</p>
+<dl class="docutils">
+<dt>m,n,symsize initializes Reed-Solomon-Code with <img class="math" src="_images/math/882c742276f1bb3a35eb43e1fb020bbd9eb5d57e.png" alt="RS(q=2^{symsize},m,n)"/>.</dt>
+<dd><ul class="first last simple">
+<li>m &#8211; Messages</li>
+<li>n &#8211; Codewords</li>
+<li>Initializes Set of Codewords C</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<em>list</em>) &#8211; Input key x.</li>
+<li><strong>m</strong> &#8211; Parameter for Reed-Solomon-Code.</li>
+<li><strong>n</strong> &#8211; Parameter for Reed-Solomon-Code.</li>
+<li><strong>symsize</strong> &#8211; Parameter for Reed-Solomon-Code.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">hash &#8211; Hash of c.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">delta &#8211; Difference between x and c.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">c &#8211; Randomly generated codeword <img class="math" src="_images/math/2b21469bb88ab1a61735ff33f8a81e0ea763bd68.png" alt="c \in C"/>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="crypto_fuzzy_jw.JW_decommit">
+<tt class="descclassname">crypto_fuzzy_jw.</tt><tt class="descname">JW_decommit</tt><big>(</big><em>hash</em>, <em>delta</em>, <em>x2</em>, <em>m=15</em>, <em>n=20</em>, <em>symsize=8</em><big>)</big><a class="headerlink" href="#crypto_fuzzy_jw.JW_decommit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Juels Wattenberg function to decommit a fuzzy commitment</p>
+<dl class="docutils">
+<dt>m,n,symsize initializes Reed-Solomon-Code with <img class="math" src="_images/math/882c742276f1bb3a35eb43e1fb020bbd9eb5d57e.png" alt="RS(q=2^{symsize},m,n)"/>.</dt>
+<dd><ul class="first last simple">
+<li>m &#8211; Messages</li>
+<li>n &#8211; Codewords</li>
+<li>Initializes Set of Codewords C</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>hash</strong> &#8211; Hash of c from Alice.</li>
+<li><strong>delta</strong> &#8211; Difference from Alice.</li>
+<li><strong>x2</strong> &#8211; Own input key x2. Slightly different from Alice x.</li>
+<li><strong>m</strong> &#8211; Parameter for Reed-Solomon-Code.</li>
+<li><strong>n</strong> &#8211; Parameter for Reed-Solomon-Code.</li>
+<li><strong>symsize</strong> &#8211; Parameter for Reed-Solomon-Code.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">c2 &#8211; Decommited c2</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">corrections &#8211; List of corrections made by Reed-Solomon</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Raise :</th><td class="field-body"><p class="first last">RuntimeError</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="crypto_fuzzy_jw.safe_random">
+<tt class="descclassname">crypto_fuzzy_jw.</tt><tt class="descname">safe_random</tt><big>(</big><em>length</em>, <em>symsize=8</em><big>)</big><a class="headerlink" href="#crypto_fuzzy_jw.safe_random" title="Permalink to this definition">¶</a></dt>
+<dd><p>get random list of secified length with symbol size
+of symsize</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>length</strong> &#8211; Length of generated list.</li>
+<li><strong>symsize</strong> &#8211; Size of symbols <img class="math" src="_images/math/1d90d7a11f01ca06f6fba9f06c5cf1c5e3f23cc7.png" alt="2^{symsize}"/> bits.</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">urandom_list &#8211; The generated list.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Documentation of Fuzzy Pairing</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="fingerprint.html"
+                        title="next chapter">Implementation of Fingerprinting</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/fuzzy.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="fingerprint.html" title="Implementation of Fingerprinting"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Documentation of Fuzzy Pairing"
+             >previous</a> |</li>
+        <li><a href="index.html">Fuzzy Pairing v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Dominik Schuermann.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

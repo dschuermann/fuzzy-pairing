@@ -1,0 +1,22 @@
+Metadata-Version: 1.0
+Name: reedsolomon
+Version: 0.1
+Summary: Reed-Solomon error correction library
+Home-page: http://hathawaymix.org/Software/ReedSolomon
+Author: Shane Hathaway
+Author-email: shane@hathawaymix.org
+License: http://www.gnu.org/copyleft/gpl.html
+Description: Reed-Solomon coding adds efficient, tunable redundancy to transmitted
+        or stored data.  This Python extension module provides a simple Python
+        interface to Phil Karn's fast Reed-Solomon library.  Since the library
+        itself is small, it is compiled into the extension.
+        
+Platform: any
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Programming Language :: Python
+Classifier: Topic :: Communications :: File Sharing
+Classifier: Topic :: System :: Archiving :: Backup
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Operating System :: Unix

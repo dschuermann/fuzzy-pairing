@@ -1,0 +1,42 @@
+Infos:
+---------------------
+The Python programs were developed in Debian testing with the excellent scientific IDE Spyder
+The following Packages are requirements to run the scripts.
+The reedsolomon library as an external library has to be compiled.
+
+
+Requirements:
+----------------------
+Packages when using Debian testing/Ubuntu:
+- python (2.6.x)
+- python-crypto (2.1.0)
+- python-scipy (0.7.2)
+- python-matplotlib (0.99.3)
+- python-dev (2.6.x) (to install reedsolomon-0.1)
+- python-setuptools (0.6.14) (to install reedsolomon-0.1)
+- python-twisted-core (10.1.0)
+- python-gst0.10 (0.10.19)
+- ntpdate (for time synchronization)
+
+reedsolomon-0.1:
+Compile and install:
+- change into the directory of reedsolomon library
+- python setup.py build
+- as root:
+  python setup.py install
+
+
+Using synchronized microphone recording in implementation
+----------------------
+You have to use an operating system with GStreamer libraries, to get this working, because it is based on pythons Gstreamer wrapper.
+In the files imlementation_server.py and implementation_client.py, the variables self.recording_use_file has
+to be changed to False on initialization of the Pairing Object to use the microphones.
+
+IMPORTANT:
+- To get the time synchronization of the recordings right, set your operating systems NTP Server to the same server, like ptbtime1.ptb.de
+- Disable all other inputs or microphones on your system
+- Make Microphones approximatly the same recording volume in ALSA, that produces good results
+- Before starting, do
+  * sudo killall ntpd
+  * sudo ntpdate -d ptbtime1.ptb.de
+  * you can do ntpdate various times

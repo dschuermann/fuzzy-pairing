@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Implementation of Fingerprinting &mdash; Fuzzy Pairing v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Fuzzy Pairing v1.0 documentation" href="index.html" />
+    <link rel="next" title="Implementation with Client and Server" href="implementation.html" />
+    <link rel="prev" title="Fuzzy Cryptography" href="fuzzy.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="implementation.html" title="Implementation with Client and Server"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="fuzzy.html" title="Fuzzy Cryptography"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Fuzzy Pairing v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-fingerprint_energy_diff">
+<span id="implementation-of-fingerprinting"></span><h1>Implementation of Fingerprinting<a class="headerlink" href="#module-fingerprint_energy_diff" title="Permalink to this headline">¶</a></h1>
+<p>Fingerprinting based on Energy Differences
+&#8220;A Highly robust Audio Fingerprinting System&#8221; by Haitsma &amp; Kalker</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">platform:</th><td class="field-body">Linux</td>
+</tr>
+<tr class="field"><th class="field-name">synopsis:</th><td class="field-body">Fingerprinting based on Energy Differences</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="function">
+<dt id="fingerprint_energy_diff.calculate_difference">
+<tt class="descclassname">fingerprint_energy_diff.</tt><tt class="descname">calculate_difference</tt><big>(</big><em>frames_energy</em><big>)</big><a class="headerlink" href="#fingerprint_energy_diff.calculate_difference" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate difference of energies</p>
+<p>Implementation following paper &#8220;A Highly Robust Audio Fingerprinting System&#8221;</p>
+<p><img class="math" src="_images/math/d2460166adbd4b988b42f336e5283f7933bc0cc6.png" alt="F(n,m)=1"/> if <img class="math" src="_images/math/5512f9af8cdef881911685a60282401693bb4d56.png" alt="E(n,m)-E(n,m+1)-(E(n-1,m)-E(n-1,m+1))&gt;0"/></p>
+<p><img class="math" src="_images/math/a579e62f384ad64f99f95cab8c394427a4c9d50a.png" alt="F(n,m)=0"/> if <img class="math" src="_images/math/078cb242dfe5dd8b7d62c4b36fc22c57667a1baa.png" alt="E(n,m)-E(n,m+1)-(E(n-1,m)-E(n-1,m+1))\leq 0"/></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>frames_energy</strong> (<em>scipy.array</em>) &#8211; frames of energys</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">fingerint</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="fingerprint_energy_diff.calculate_energy">
+<tt class="descclassname">fingerprint_energy_diff.</tt><tt class="descname">calculate_energy</tt><big>(</big><em>frames_frequency</em>, <em>frequency_band_length</em><big>)</big><a class="headerlink" href="#fingerprint_energy_diff.calculate_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>divide into frequency bands and calculate energy</p>
+<p>Optional TODO: Implement band range (bottom and top)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>frames_frequency</strong> (<em>scipy.array</em>) &#8211; scipy.array with the frames in frequency domain</li>
+<li><strong>frequency_band_length</strong> (<em>int</em>) &#8211; length of every frequency band</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">frames_energy &#8211; Two-dimensional array with energy list per Frame</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="fingerprint_energy_diff.calculate_fingerprint">
+<tt class="descclassname">fingerprint_energy_diff.</tt><tt class="descname">calculate_fingerprint</tt><big>(</big><em>data</em>, <em>samplerate</em><big>)</big><a class="headerlink" href="#fingerprint_energy_diff.calculate_fingerprint" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate fingerprint of given data</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>list</em>) &#8211; Should be a one dimensional vector, that holds the audiodata in mono</li>
+<li><strong>samplerate</strong> (<em>int</em>) &#8211; Samplerate of audio data</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">fingerprint</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="fingerprint_energy_diff.frames_fft">
+<tt class="descclassname">fingerprint_energy_diff.</tt><tt class="descname">frames_fft</tt><big>(</big><em>frames</em>, <em>weighted=True</em><big>)</big><a class="headerlink" href="#fingerprint_energy_diff.frames_fft" title="Permalink to this definition">¶</a></dt>
+<dd><p>doing fast fourier transformations on each frame vector
+in frames</p>
+<p>Optional TODO: Implement filter</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>frames</strong> (<em>scipy.array</em>) &#8211; input scipy.array of audio frames</li>
+<li><strong>weighted</strong> (<em>bool</em>) &#8211; Should it be weighted by hamming-window?</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">frames_frequency &#8211; Frequencies per frame</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="fingerprint_energy_diff.get_fingerprint">
+<tt class="descclassname">fingerprint_energy_diff.</tt><tt class="descname">get_fingerprint</tt><big>(</big><em>data</em>, <em>samplerate</em><big>)</big><a class="headerlink" href="#fingerprint_energy_diff.get_fingerprint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Just a wrapper of <tt class="docutils literal"><span class="pre">calculate_fingerprint</span></tt> to get
+the first 512 bits only.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>list</em>) &#8211; Should be a one dimensional vector, that holds the audiodata in mono</li>
+<li><strong>samplerate</strong> (<em>int</em>) &#8211; Samplerate of audio data</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">fingerprint &#8211; 512 bit fingerprint</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="fingerprint_energy_diff.get_frames">
+<tt class="descclassname">fingerprint_energy_diff.</tt><tt class="descname">get_frames</tt><big>(</big><em>data</em>, <em>samplerate</em>, <em>overlap_factor=0.0</em><big>)</big><a class="headerlink" href="#fingerprint_energy_diff.get_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split data into frames</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>scipy.array</em>) &#8211; One-dimensional scipy.array with the audio data</li>
+<li><strong>samplerate</strong> (<em>int</em>) &#8211; samplerate of data</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">frames</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="fuzzy.html"
+                        title="previous chapter">Fuzzy Cryptography</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="implementation.html"
+                        title="next chapter">Implementation with Client and Server</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/fingerprint.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="implementation.html" title="Implementation with Client and Server"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="fuzzy.html" title="Fuzzy Cryptography"
+             >previous</a> |</li>
+        <li><a href="index.html">Fuzzy Pairing v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Dominik Schuermann.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

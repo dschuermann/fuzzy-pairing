@@ -1,0 +1,8 @@
+server.wav
+client.wav
+*.pyc
+client_delta.txt
+client_fingerprint.txt
+client_hash.txt
+server_fingerprint.txt
+reedsolomon-0.1/build

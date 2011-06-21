@@ -1,0 +1,419 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Helper Classes &mdash; Fuzzy Pairing v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Fuzzy Pairing v1.0 documentation" href="index.html" />
+    <link rel="next" title="Analysis" href="other.html" />
+    <link rel="prev" title="Implementation with Client and Server" href="implementation.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="other.html" title="Analysis"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="implementation.html" title="Implementation with Client and Server"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Fuzzy Pairing v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="helper-classes">
+<h1>Helper Classes<a class="headerlink" href="#helper-classes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-helper_check_ntp">
+<span id="ntp-checker"></span><h2>NTP Checker<a class="headerlink" href="#module-helper_check_ntp" title="Permalink to this headline">¶</a></h2>
+<p>Check Time from NTP Server</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">platform:</th><td class="field-body">Linux</td>
+</tr>
+<tr class="field"><th class="field-name">synopsis:</th><td class="field-body">NTP Check</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="function">
+<dt id="helper_check_ntp.time_in_sync">
+<tt class="descclassname">helper_check_ntp.</tt><tt class="descname">time_in_sync</tt><big>(</big><big>)</big><a class="headerlink" href="#helper_check_ntp.time_in_sync" title="Permalink to this definition">¶</a></dt>
+<dd><p>check if local time is in sync with NTP server time</p>
+<p>checks against <tt class="docutils literal"><span class="pre">time_server</span></tt> defined in <tt class="docutils literal"><span class="pre">helper_check_ntp</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">If local and Server time are in sync it return True</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-helper_audio">
+<span id="audio-helper"></span><h2>Audio Helper<a class="headerlink" href="#module-helper_audio" title="Permalink to this headline">¶</a></h2>
+<p>Functions to open audio files and to record from default microphone</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">platform:</th><td class="field-body">Linux</td>
+</tr>
+<tr class="field"><th class="field-name">synopsis:</th><td class="field-body">Audio Helper</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="function">
+<dt id="helper_audio.load_mono">
+<tt class="descclassname">helper_audio.</tt><tt class="descname">load_mono</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#helper_audio.load_mono" title="Permalink to this definition">¶</a></dt>
+<dd><p>load mono audio file with gstreamer</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<em>str</em>) &#8211; name of file, relative path</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">data &#8211; Channel as list</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">samplerate &#8211; Samplerate of audio file</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="helper_audio.load_stereo">
+<tt class="descclassname">helper_audio.</tt><tt class="descname">load_stereo</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#helper_audio.load_stereo" title="Permalink to this definition">¶</a></dt>
+<dd><p>load stereo audio file with gstreamer</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<em>str</em>) &#8211; name of file, relative path</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">left_channel &#8211; Left channel as list</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">right_channel &#8211; Right channel as list</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">samplerate &#8211; Samplerate of audio file</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="helper_audio.load_wave_with_scipy">
+<tt class="descclassname">helper_audio.</tt><tt class="descname">load_wave_with_scipy</tt><big>(</big><em>wavFile</em><big>)</big><a class="headerlink" href="#helper_audio.load_wave_with_scipy" title="Permalink to this definition">¶</a></dt>
+<dd><p>load Wave File with build in function from Scipy</p>
+<p>Can only open <strong>.wav</strong> files</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">It has problems with many codecs</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<em>str</em>) &#8211; name of file, relative path</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">left_channel &#8211; Left channel as list</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">right_channel &#8211; Right channel as list</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">samplerate &#8211; Samplerate of audio file</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-helper_implementation">
+<span id="implementation"></span><h2>Implementation<a class="headerlink" href="#module-helper_implementation" title="Permalink to this headline">¶</a></h2>
+<p>Functions used by server and client</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">platform:</th><td class="field-body">Linux</td>
+</tr>
+<tr class="field"><th class="field-name">synopsis:</th><td class="field-body">Functions used by server and client</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="function">
+<dt id="helper_implementation.generate_key_for_aes">
+<tt class="descclassname">helper_implementation.</tt><tt class="descname">generate_key_for_aes</tt><big>(</big><em>codeword</em><big>)</big><a class="headerlink" href="#helper_implementation.generate_key_for_aes" title="Permalink to this definition">¶</a></dt>
+<dd><p>take the codeword generated with Fuzzy Cryptography,
+and reformat it to use it as AES key.</p>
+<dl class="docutils">
+<dt>AES keys:</dt>
+<dd><ul class="first last simple">
+<li>AES uses 256 Bit=32 Bytes as Keys</li>
+<li>Every character in AES key is 8 Bits</li>
+</ul>
+</dd>
+<dt>Codewords:</dt>
+<dd><ul class="first last simple">
+<li>Codewords are 512 symbols long</li>
+<li>Every symbol has numbers from 0 to <img class="math" src="_images/math/c0395858639bb3c63f45a8288f1a9531294ad76e.png" alt="2^{10}-1"/> (0 to 1023)</li>
+</ul>
+</dd>
+<dt>Mapping Codewords to AES keys:</dt>
+<dd><ul class="first last simple">
+<li>Add every 16 numbers blocks</li>
+<li>Mapping symbols to numbers from 0 to <img class="math" src="_images/math/d258029bd116411cb6c3475e4a7bb02343b15b38.png" alt="2^{8}-1"/> (0 to 255) with modulo</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>codeword</strong> (<em>list</em>) &#8211; 512 symbols long codeword list</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">32 byte key for AES</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="helper_implementation.get_possible_fingerprints">
+<tt class="descclassname">helper_implementation.</tt><tt class="descname">get_possible_fingerprints</tt><big>(</big><em>recording_data</em>, <em>recording_samplerate</em><big>)</big><a class="headerlink" href="#helper_implementation.get_possible_fingerprints" title="Permalink to this definition">¶</a></dt>
+<dd><p>generate many fingerprints varying in time</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>recording_data</strong> &#8211; complete recording data</li>
+<li><strong>recording_samplerate</strong> &#8211; samplerate of recording</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">many fingerprints</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="helper_implementation.move_data_left">
+<tt class="descclassname">helper_implementation.</tt><tt class="descname">move_data_left</tt><big>(</big><em>data</em>, <em>steps</em><big>)</big><a class="headerlink" href="#helper_implementation.move_data_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>move data to the left and fill rest with zeros</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> &#8211; chunks of data</li>
+<li><strong>steps</strong> (<em>int</em>) &#8211; steps to move</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">data</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="helper_implementation.move_data_right">
+<tt class="descclassname">helper_implementation.</tt><tt class="descname">move_data_right</tt><big>(</big><em>data</em>, <em>steps</em><big>)</big><a class="headerlink" href="#helper_implementation.move_data_right" title="Permalink to this definition">¶</a></dt>
+<dd><p>move data to the right and fill rest with zeros</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> &#8211; chunks of data</li>
+<li><strong>steps</strong> (<em>int</em>) &#8211; steps to move</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">data</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-helper_analysis">
+<span id="analysis"></span><h2>Analysis<a class="headerlink" href="#module-helper_analysis" title="Permalink to this headline">¶</a></h2>
+<p>Helper Functions</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">platform:</th><td class="field-body">Linux</td>
+</tr>
+<tr class="field"><th class="field-name">synopsis:</th><td class="field-body">Helper Functions</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="function">
+<dt id="helper_analysis.absolute_distance">
+<tt class="descclassname">helper_analysis.</tt><tt class="descname">absolute_distance</tt><big>(</big><em>fingerprint1</em>, <em>fingerprint2</em><big>)</big><a class="headerlink" href="#helper_analysis.absolute_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate absolute distance</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fingerprint1</strong> &#8211; List with numbers</li>
+<li><strong>fingerprint2</strong> &#8211; List with numbers</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="helper_analysis.hamming_distance">
+<tt class="descclassname">helper_analysis.</tt><tt class="descname">hamming_distance</tt><big>(</big><em>fingerprint1</em>, <em>fingerprint2</em><big>)</big><a class="headerlink" href="#helper_analysis.hamming_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of ciphers that are different in <tt class="docutils literal"><span class="pre">fingerprint1</span></tt>
+compared to <tt class="docutils literal"><span class="pre">fingerprint2</span></tt></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fingerprint1</strong> &#8211; List with numbers</li>
+<li><strong>fingerprint2</strong> &#8211; List with numbers</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="helper_analysis.hamming_weight">
+<tt class="descclassname">helper_analysis.</tt><tt class="descname">hamming_weight</tt><big>(</big><em>fingerprint</em><big>)</big><a class="headerlink" href="#helper_analysis.hamming_weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of ciphers in fingerprint that are not 0</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fingerprint</strong> &#8211; List with numbers</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Helper Classes</a><ul>
+<li><a class="reference internal" href="#module-helper_check_ntp">NTP Checker</a></li>
+<li><a class="reference internal" href="#module-helper_audio">Audio Helper</a></li>
+<li><a class="reference internal" href="#module-helper_implementation">Implementation</a></li>
+<li><a class="reference internal" href="#module-helper_analysis">Analysis</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="implementation.html"
+                        title="previous chapter">Implementation with Client and Server</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="other.html"
+                        title="next chapter">Analysis</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/helper.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="other.html" title="Analysis"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="implementation.html" title="Implementation with Client and Server"
+             >previous</a> |</li>
+        <li><a href="index.html">Fuzzy Pairing v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Dominik Schuermann.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
