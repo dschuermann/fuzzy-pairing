@@ -37,8 +37,8 @@ log.setLevel(logging.DEBUG)
 def main():
     # start client and connect to port 4200
     factory = pb.PBClientFactory()
-#    reactor.connectTCP("134.169.204.3", 4200, factory) # Insert appropriate IP here when using two machines
-    reactor.connectTCP("localhost", 4200, factory)
+    reactor.connectTCP("192.168.178.2", 4200, factory) # Insert appropriate IP here when using two machines
+#    reactor.connectTCP("localhost", 4200, factory)
 
     # instatiate agreement object of client
     pairing = PairingClient(device_id="Alice")
